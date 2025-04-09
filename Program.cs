@@ -16,6 +16,11 @@ namespace Functions
             Console.WriteLine("the result of this operation is: " + input + "\n");
         }
 
+        public static void printValue(char input)
+        {
+            Console.WriteLine("the result of this operation is: " + input + "\n");
+        }
+
         public static void printEnd()
         {
             Console.WriteLine("(------ Press Enter To Go Back To MENU ------)");
@@ -139,9 +144,10 @@ namespace Functions
                                 Console.WriteLine("Enter Student Score Correctly: ");
                                 score = double.Parse(Console.ReadLine());
                             }
-                            double result3 = GradingSystem(score);
 
-                            printValue(score);
+                            char result3 = GradingSystem(score);
+
+                            printValue(result3);
                             printEnd();
 
                             break;
@@ -309,29 +315,31 @@ namespace Functions
         /* ------------------------------- 5. Grading System  --------------------------------*/
         public static char GradingSystem(double score)
         {
-            
 
+            char grade;
             
             if (100 >= score && score >= 90)
             {
-               return 'A';
+                grade = 'A';
+                
             }
             else if (89 <= score && score >= 80)
             {
-                return 'B';
+                grade = 'B';
             }
             else if (79 <= score && score >= 70)
             {
-                return 'C';
+                grade = 'C';
             }
             else if (69 <= score && score >= 60)
             {
-                return 'D';
+                grade = 'D';
             }
             else
             {
-                return 'F';
+                grade = 'F';
             }
+            return grade;
 
 
         }
