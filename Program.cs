@@ -157,14 +157,73 @@ namespace Functions
                             Console.WriteLine("Enter Second Number");
                             num22 = double.Parse(Console.ReadLine());
 
-                            string result4 = LargestOfThreeNumbers(num11, num22);
+                            string result4 = SwapTwoNumbers(num11, num22);
 
                             printValue(result4);
                             printEnd();
                             break;
-                        case 7: DaysToWeeksAndDaysConverter(); break;
-                        case 8: ElectricityBillCalculator(); break;
-                        case 9: SimpleCalculator(); break;
+
+
+                        case 7:
+
+                            Console.Clear();
+                            int days;
+
+                            Console.WriteLine("Enter number of days");
+                            days = int.Parse(Console.ReadLine());
+
+                            string result5 = DaysToWeeksAndDaysConverter(days);
+
+                            printValue(result5);
+                            printEnd();
+
+                            break;
+
+                        case 8:
+
+                            Console.Clear();
+                            double NUnit;
+                            Console.WriteLine("Enter Number of Unit ");
+                            NUnit = double.Parse(Console.ReadLine());
+
+                            while (NUnit < 0)
+                            {
+                                Console.WriteLine("Enter Number of Unit correctly 1 or more: ");
+                                NUnit = double.Parse(Console.ReadLine());
+                            }
+
+                            double result6 = ElectricityBillCalculator(NUnit);
+                            printValue(result6);
+
+                            printEnd();
+                            break;
+
+
+                        case 9:
+
+                            Console.Clear();
+                            double num111, num222;
+                            char operatorr;
+
+                            Console.WriteLine("Enter First Number");
+                            num111 = double.Parse(Console.ReadLine());
+
+                            Console.WriteLine("Enter operator (+, -, *, /)");
+                            operatorr = Console.ReadKey().KeyChar;
+
+                            Console.WriteLine("Enter Second Number");
+                            num222 = double.Parse(Console.ReadLine());
+
+                            double result7 = SimpleCalculator(num111, operatorr, num222);
+                            printValue(result7);
+                            printEnd();
+
+
+
+
+                            break;
+
+
                         case 10: return;
                         default: Console.WriteLine("Invalid choice! Try again."); break;
                     }
@@ -286,120 +345,84 @@ namespace Functions
             num1 = num2;
             num2 = num33;
 
-            return "New First Number is " + num1 + " New Second Number is " + num2;
+            return "New First Number is: " + num1 + "\n New Second Number is: " + num2;
 
         }
 
         /* ------------------------------- 7. Days to Weeks and Days Converter  --------------------------------*/
-        static void DaysToWeeksAndDaysConverter()
+        public static string DaysToWeeksAndDaysConverter(int days)
         {
-            Console.Clear();
-            int days;
             double weeks, RDays;
-
-            Console.WriteLine("Enter number of days");
-            days = int.Parse(Console.ReadLine());
 
             if (days > 0)
             {
                 weeks = days / 7;
                 RDays = days % 7;
-                Console.WriteLine("Number of weeks: " + weeks + " Remaining days " + RDays);
+                return "Number of weeks: " + weeks + " Remaining days " + RDays;
             }
             else
             {
-                Console.WriteLine("Enter correct number");
+                return "Enter correct number";
             }
 
-            Console.WriteLine("(------ Press Enter To Go Back To MENU ------)");
-            Console.ReadLine();
+
         }
 
         /* ------------------------------- 8. Electricity Bill Calculator  --------------------------------*/
-        static void ElectricityBillCalculator()
+        public static double ElectricityBillCalculator(double NUnit)
         {
-            Console.Clear();
-            double NUnit, result;
+           
 
-            Console.WriteLine("Enter Number of Unit ");
-            NUnit = double.Parse(Console.ReadLine());
 
-            if (NUnit < 0)
+            if (1 <= NUnit && NUnit <= 100)
             {
-                Console.WriteLine("Enter Number of Unit correctly 1 or more");
-            }
-            else if (1 <= NUnit && NUnit <= 100)
-            {
-                result = NUnit * 0.5;
-                Console.WriteLine("The price is: $" + result);
+                return NUnit * 0.5;
             }
             else if (101 <= NUnit && NUnit <= 300)
             {
-                result = NUnit * 0.75;
-                Console.WriteLine("The price is: $" + result);
+                return NUnit * 0.75;
             }
             else
             {
-                result = NUnit * 1;
-                Console.WriteLine("The price is: $" + result);
+                return NUnit * 1;
+                
             }
 
-            Console.WriteLine("(------ Press Enter To Go Back To MENU ------)");
-            Console.ReadLine();
+
         }
 
         /* ------------------------------- 9. Simple Calculator  --------------------------------*/
-        static void SimpleCalculator()
+        public static double SimpleCalculator(double num1 , char operatorr, double num2 )
         {
-            Console.Clear();
-            double num1, num2, result;
-            string operatorr;
 
-            Console.WriteLine("Enter First Number");
-            num1 = double.Parse(Console.ReadLine());
 
-            Console.WriteLine("Enter operator (+, -, *, /)");
-            operatorr = Console.ReadLine();
-
-            Console.WriteLine("Enter Second Number");
-            num2 = double.Parse(Console.ReadLine());
-
-            Console.WriteLine(num1 + operatorr + num2);
-
-            if (operatorr == "+")
+            if (operatorr == '+')
             {
-                result = num1 + num2;
-                Console.WriteLine("The Result: " + num1 + operatorr + num2 + " = " + result);
+                return num1 + num2;
             }
-            else if (operatorr == "-")
+            else if (operatorr == '-')
             {
-                result = num1 - num2;
-                Console.WriteLine("The Result: " + num1 + operatorr + num2 + " = " + result);
+                return num1 - num2;
             }
-            else if (operatorr == "*")
+            else if (operatorr == '*')
             {
-                result = num1 * num2;
-                Console.WriteLine("The Result: " + num1 + operatorr + num2 + " = " + result);
+                return num1 * num2;
             }
-            else if (operatorr == "/")
+            else if (operatorr == '/')
             {
                 if (num2 != 0)
                 {
-                    result = num1 / num2;
-                    Console.WriteLine("The Result: " + num1 + " / " + num2 + " = " + result);
+                    return num1 / num2;
                 }
                 else
                 {
-                    Console.WriteLine("Cannot divide by 0");
+                    return 0;
                 }
             }
-            else
-            {
-                Console.WriteLine("Enter Correct Operator!!!!!!!");
-            }
+            return 0;
 
-            Console.WriteLine("(------ Press Enter To Go Back To MENU ------)");
-            Console.ReadLine();
+
+
         }
     }
 }
